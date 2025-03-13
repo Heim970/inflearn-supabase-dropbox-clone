@@ -1,53 +1,30 @@
 "use client";
 
-import { createTodo, getTodos } from "actions/todo-actions";
-import Todo from "component/todo";
-import { Button, Input } from "@material-tailwind/react";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import DropboxImageList from "components/dropbox-image-list";
+import FileDragDropZone from "components/file-dragdropzone";
+import Logo from "components/logo";
+import SearchComponent from "components/search-component";
 import { useState } from "react";
 
 export default function UI() {
   const [searchInput, setSearchInput] = useState("");
 
-  const todosQuery = useQuery({
-    queryKey: ["todos", searchInput],
-    queryFn: () => getTodos({ searchInput }),
-  });
-
-  const createdTodoMutation = useMutation({
-    mutationFn: () =>
-      createTodo({
-        title: "",
-        completed: false,
-      }),
-
-    onSuccess: () => {
-      todosQuery.refetch();
-    },
-  });
-
   return (
-    <div className="w-2/3 mx-auto flex-col items-center py-10 gap-2">
-      <h1 className="text-xl">TODO LIST</h1>
-      <Input
-        label="Search TODO"
-        placeholder="Search TODO"
-        icon={<i className="fas fa-search" />}
-        value={searchInput}
-        onChange={(e) => setSearchInput(e.target.value)}
+    <main className="w-full p-2 flex-col gap-4">
+      {/* Logo */}
+      <Logo />
+
+      {/* Search Component */}
+      <SearchComponent
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
       />
 
-      {todosQuery.isPending && <p>Loading...</p>}
-      {todosQuery.data &&
-        todosQuery.data.map((todo) => <Todo key={todo.id} todo={todo} />)}
+      {/* File Drag&Drop Zone */}
+      <FileDragDropZone />
 
-      <Button
-        onClick={() => createdTodoMutation.mutate()}
-        loading={createdTodoMutation.isPending}
-      >
-        <i className="fas fa-plus mr-2" />
-        ADD TODO
-      </Button>
-    </div>
+      {/* Dropbox Image List */}
+      <DropboxImageList />
+    </main>
   );
 }
