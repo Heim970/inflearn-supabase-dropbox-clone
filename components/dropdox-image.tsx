@@ -15,6 +15,16 @@ export default function DropboxImage({ image }) {
       });
     },
   });
+
+  const formattedDate = new Date(image.updated_at).toLocaleString("ko-KR", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  });
+
   return (
     <div className="relative w-full flex flex-col gap-2 p-4 border border-gray-100 rounded-2xl shadow-md">
       {/* Image */}
@@ -26,6 +36,8 @@ export default function DropboxImage({ image }) {
       </div>
       {/* filename */}
       <div className="">{image.name}</div>
+      {/* updated_at */}
+      <div className="text-xs">수정된 시간: {formattedDate}</div>
 
       <IconButton
         onClick={() => {

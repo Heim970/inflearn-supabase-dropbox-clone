@@ -10,6 +10,7 @@ export default function DropboxImageList({ searchInput }) {
     queryKey: ["images", searchInput],
     queryFn: () => searchFiles(searchInput),
   });
+
   return (
     <section className="grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2">
       {searchImagesQuery.isLoading && <Spinner />}
