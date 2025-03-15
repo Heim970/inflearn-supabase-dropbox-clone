@@ -10,19 +10,22 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
+    "baseUrl": "/src",
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "*": ["./*"]
+      "@material-tailwind/react": ["node_modules/@material-tailwind/react"],
+      "actions/*": ["src/actions/*"],
+      "config/*": ["src/config/*"],
+      "utils/*": ["src/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
