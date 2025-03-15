@@ -15,6 +15,7 @@ export default function DropboxImage({ image }) {
       });
     },
   });
+  console.log(image);
 
   const formattedDate = new Date(image.updated_at).toLocaleString("ko-KR", {
     year: "numeric",

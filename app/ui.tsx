@@ -10,7 +10,7 @@ export default function UI() {
   const [searchInput, setSearchInput] = useState("");
 
   return (
-    <main className="w-full p-2 flex-col gap-4">
+    <main className="w-full p-2 flex flex-col gap-4">
       {/* Logo */}
       <Logo />
 

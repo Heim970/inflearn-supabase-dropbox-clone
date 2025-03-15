@@ -12,7 +12,7 @@ export default function DropboxImageList({ searchInput }) {
   });
 
   return (
-    <section className="grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2">
+    <section className="grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-2">
       {searchImagesQuery.isLoading && <Spinner />}
       {searchImagesQuery.data &&
         searchImagesQuery.data.map((image) => (
