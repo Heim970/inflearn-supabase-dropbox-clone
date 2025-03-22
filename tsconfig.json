@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "/src",
+    "baseUrl": ".",
     "plugins": [
       {
         "name": "next"
@@ -23,9 +23,10 @@
     ],
     "paths": {
       "@material-tailwind/react": ["node_modules/@material-tailwind/react"],
-      "actions/*": ["src/actions/*"],
-      "config/*": ["src/config/*"],
-      "utils/*": ["src/utils/*"]
+      "actions/*": ["actions/*"],
+      "config/*": ["config/*"],
+      "utils/*": ["utils/*"],
+      "components/*": ["components/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
